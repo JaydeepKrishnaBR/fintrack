@@ -3,12 +3,12 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCiAyF3MNi8sl3eu8nW6Gk6YxZhbWwAheM",
-  authDomain: "fintrack-011.firebaseapp.com",
-  projectId: "fintrack-011",
-  storageBucket: "fintrack-011.firebasestorage.app",
-  messagingSenderId: "351252302840",
-  appId: "1:351252302840:web:7f38686b3be3276613a40d"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 
