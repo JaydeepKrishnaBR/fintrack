@@ -3,11 +3,13 @@ import { useAuth } from "../context/AuthContext";
 import { useThemeMode } from "../context/ThemeContext";
 import { Box, Button, Typography, Paper } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const { login, user } = useAuth();
   const { resolved } = useThemeMode();
   const dark = resolved === "dark";
+  const navigate = useNavigate();
 
   if (user) return <Navigate to="/" />;
 
@@ -192,6 +194,15 @@ export default function LoginPage() {
         <Typography sx={{ fontSize: 11, color: dark ? "rgba(255,255,255,0.3)" : "#aaa", mt: 2.5 }}>
           Your data is private and stored securely in Firebase
         </Typography>
+
+        <Button
+  size="small"
+  onClick={() => navigate("/admin-login")}
+  sx={{ mt: 1.5, p: 1, color: dark ? "rgba(93, 101, 56, 0.25)" : "#ccc", textTransform: "none", fontSize: 11 }}
+>
+  Admin login →
+</Button>
+
       </Paper>
     </Box>
   );
