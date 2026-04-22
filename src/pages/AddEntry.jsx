@@ -11,6 +11,7 @@ import {
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import WarningIcon from "@mui/icons-material/Warning";
 import ErrorIcon from "@mui/icons-material/Error";
+import StatementUploader from "../components/StatementUploader";
 
 const CATEGORIES = {
   income: ["Salary", "Freelance", "Business", "Investment", "Gift", "Other"],
@@ -149,12 +150,15 @@ export default function AddEntry() {
 
   return (
     <Box maxWidth={500}>
-      <Typography sx={{ fontSize: { xs: 26, sm: 32 }, fontWeight: 800, letterSpacing: "-1px", mb: 0.5 }}>
-        Add Entry
-      </Typography>
-      <Typography sx={{ color: dark ? "rgba(255,255,255,0.45)" : "#888", mb: 3, fontWeight: 500 }}>
-        Log your income, expense or debt
-      </Typography>
+      <Box display="flex" alignItems="center" justifyContent="space-between" flexWrap="wrap" gap={1} mb={0.5}>
+  <Typography sx={{ fontSize: { xs: 26, sm: 32 }, fontWeight: 800, letterSpacing: "-1px" }}>
+    Add Entry
+  </Typography>
+  <StatementUploader />
+</Box>
+<Typography sx={{ color: dark ? "rgba(255,255,255,0.45)" : "#888", mb: 3, fontWeight: 500 }}>
+  Log manually or import from your bank statement
+</Typography>
 
       <ToggleButtonGroup value={type} exclusive onChange={handleTypeChange} fullWidth sx={{ mb: 3 }}>
         {["income", "expense", "debt"].map((t) => (
