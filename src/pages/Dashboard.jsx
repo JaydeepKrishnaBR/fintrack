@@ -123,7 +123,7 @@ export default function Dashboard() {
       />
 
       {/* Summary row */}
-      <Grid container spacing={1.5} mb={2.5}>
+      <Grid container spacing={1.5} sx={{mb: 2}}>
         {[
           { label: "Income", val: fmt(income), color: "#1D9E75" },
           { label: "Expense", val: fmt(expense), color: "#E24B4A" },
@@ -137,7 +137,7 @@ export default function Dashboard() {
               border: `1px solid ${dark ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.9)"}`,
               borderRadius: 3, p: 1.5,
             }}>
-              <Typography sx={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5, color: dark ? "rgba(255,255,255,0.4)" : "#aaa", fontWeight: 700 }}>{m.label}</Typography>
+              <Typography sx={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5, color: dark ? "rgba(255, 255, 255, 0.9)" : "#535353d6", fontWeight: 700 }}>{m.label}</Typography>
               <Typography sx={{ fontSize: 20, fontWeight: 800, color: m.color, letterSpacing: "-0.5px" }}>{m.val}</Typography>
             </Box>
           </Grid>

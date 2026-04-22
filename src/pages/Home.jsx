@@ -70,7 +70,7 @@ export default function Home() {
       </Typography>
 
       {/* 3 metric cards */}
-      <Grid container spacing={1.5} mb={2}>
+      <Grid container spacing={1.5} sx={{mb: 2}}>
         {metrics.map(m => (
           <Grid item xs={4} key={m.label}>
             <Box sx={{ ...glass, p: { xs: 1.2, sm: 2 } }}>
@@ -104,29 +104,29 @@ export default function Home() {
               borderRadius: 4,
             }
           }} />
-        <Typography sx={{ fontSize: 11, color: dark ? "rgba(255,255,255,0.35)" : "#aaa", mt: 0.8 }}>
+        <Typography sx={{ fontSize: 16, fontWeight: 900, color: dark ? "rgba(174, 4, 4, 0.79)" : "#8f0202", mt: 0.8 }}>
           {savingsPct >= 20 ? "Great savings discipline!" : savingsPct >= 10 ? "Try to reach 20% savings" : "Low savings — review expenses"}
         </Typography>
       </Box>
 
       {/* Debt + FinScore in 2 columns */}
-      <Grid container spacing={1.5} mb={2}>
+      <Grid container spacing={1.5} sx={{mb: 2}}>
         <Grid item xs={12} sm={6}>
           <Box sx={{ ...glass, p: 2, height: "100%" }}>
-            <Typography sx={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: dark ? "rgba(255,255,255,0.4)" : "#aaa", mb: 1 }}>
+            <Typography sx={{ fontSize: 16, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: dark ? "rgba(255,255,255,0.4)" : "#aaa", mb: 1 }}>
               Debt
             </Typography>
             <Typography sx={{ fontSize: 20, fontWeight: 800, color: "#BA7517", letterSpacing: "-0.5px" }}>
               {fmt(totalDebt)}
             </Typography>
-            <Typography sx={{ fontSize: 11, color: dark ? "rgba(255,255,255,0.35)" : "#aaa", mt: 0.3 }}>
+            <Typography sx={{ fontSize: 14, color: dark ? "rgba(255,255,255,0.35)" : "#aaa", mt: 0.3 }}>
               outstanding balance
             </Typography>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Box sx={{ ...glass, p: 2, height: "100%" }}>
-            <Typography sx={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: dark ? "rgba(255,255,255,0.4)" : "#aaa", mb: 1 }}>
+            <Typography sx={{ fontSize: 16, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: dark ? "rgba(255,255,255,0.4)" : "#aaa", mb: 1 }}>
               FinManage Score
             </Typography>
             <FinScore transactions={transactions} debts={debts} dark={dark} compact />

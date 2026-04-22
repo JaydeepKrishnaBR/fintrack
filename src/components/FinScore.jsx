@@ -190,15 +190,17 @@ export default function FinScore({ transactions, debts, dark, compact }) {
     }
 
     return (
-      <Box display="flex" alignItems="center" gap={1.5}>
-        <Typography sx={{ fontSize: 28, fontWeight: 900, color: scoreColor(result.total), letterSpacing: "-1px" }}>
+      <Box>
+      <Box sx={{display: "flex", alignItems: "center", justifyContent: 'flex-start', columnGap: 2}}>
+        <Typography sx={{ fontSize: 20, fontWeight: 900, color: scoreColor(result.total), letterSpacing: "-1px", }}>
           {result.total}
         </Typography>
-        <Box>
-          <Typography sx={{ fontSize: 12, fontWeight: 700, color: scoreColor(result.total) }}>
+        <Typography sx={{ fontSize: 20, fontWeight: 700, color: scoreColor(result.total) }}>
             {scoreLabel(result.total)}
           </Typography>
-          <Typography sx={{ fontSize: 10, color: dark ? "rgba(255,255,255,0.35)" : "#aaa" }}>
+          </Box>
+        <Box>
+          <Typography sx={{ fontSize: 14, color: dark ? "rgba(255,255,255,0.35)" : "#aaa" }}>
             out of 100
           </Typography>
         </Box>

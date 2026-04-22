@@ -96,7 +96,8 @@ export default function Transactions() {
 
       {/* Rows per page */}
       <Box display="flex" alignItems="center" gap={1.5} mb={2}>
-        <Typography sx={{ fontSize: 13, color: dark ? "rgba(255,255,255,0.45)" : "#888" }}>
+        <Box sx={{display:'flex', alignItems: 'center', justifyContent: 'center', mt: 2, }}>
+        <Typography sx={{ fontSize: 13, color: dark ? "rgba(255,255,255,0.45)" : "#888", mr: 2}}>
           Show
         </Typography>
         <FormControl size="small">
@@ -107,9 +108,26 @@ export default function Transactions() {
             ))}
           </Select>
         </FormControl>
+        </Box>
+        {totalPages > 1 && (
+        <Box>
+        <Box sx={{display:'flex', alignItems: 'center', justifyContent: 'center', mt: 1, }}>
+          <Pagination
+            count={totalPages} page={page} onChange={(_, v) => setPage(v)}
+            color="primary"
+            sx={{
+              "& .MuiPaginationItem-root": { fontWeight: 600 },
+              "& .Mui-selected": { bgcolor: "rgba(29,158,117,0.2) !important", color: "#1D9E75" },
+            }}
+          />
+        </Box>
+        <Box sx={{display:'flex', alignItems: 'center', justifyContent: 'center', mt: 1, mb: 2}}>
         <Typography sx={{ fontSize: 13, color: dark ? "rgba(255,255,255,0.45)" : "#888" }}>
           per page · showing {Math.min((page - 1) * pageSize + 1, typeFiltered.length)}–{Math.min(page * pageSize, typeFiltered.length)} of {typeFiltered.length}
         </Typography>
+        </Box>
+        </Box>
+      )}
       </Box>
 
       <Card elevation={0} sx={glass}>
@@ -157,7 +175,7 @@ export default function Transactions() {
 
       {/* Pagination controls */}
       {totalPages > 1 && (
-        <Box display="flex" justifyContent="center" mt={2.5}>
+        <Box sx={{display:'flex', alignItems: 'center', justifyContent: 'center', mt: 2.5, }}>
           <Pagination
             count={totalPages} page={page} onChange={(_, v) => setPage(v)}
             color="primary"
@@ -168,6 +186,19 @@ export default function Transactions() {
           />
         </Box>
       )}
+      <Box sx={{display:'flex', alignItems: 'center', justifyContent: 'center', mt: 2, }}>
+        <Typography sx={{ fontSize: 13, color: dark ? "rgba(255,255,255,0.45)" : "#888", mr: 2}}>
+          Show
+        </Typography>
+        <FormControl size="small">
+          <Select value={pageSize} onChange={handlePageSizeChange}
+            sx={{ fontSize: 13, height: 36, minWidth: 70 }}>
+            {PAGE_SIZE_OPTIONS.map(s => (
+              <MenuItem key={s} value={s}>{s}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        </Box>
     </Box>
   );
 }
