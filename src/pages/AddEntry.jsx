@@ -150,17 +150,22 @@ export default function AddEntry() {
 
   return (
     <Box maxWidth={500}>
-      <Box display="flex" alignItems="center" justifyContent="space-between" flexWrap="wrap" gap={1} mb={0.5}>
-  <Typography sx={{ fontSize: { xs: 26, sm: 32 }, fontWeight: 800, letterSpacing: "-1px" }}>
-    Add Entry
-  </Typography>
-  <StatementUploader />
-</Box>
-<Typography sx={{ color: dark ? "rgba(255,255,255,0.45)" : "#888", mb: 3, fontWeight: 500 }}>
-  Log manually or import from your bank statement
-</Typography>
+      <Box display="flex" alignItems="center" justifyContent="space-between" flexWrap="wrap" gap={1} mb={1}>
+        <Typography sx={{ fontSize: { xs: 26, sm: 32 }, fontWeight: 800, letterSpacing: "-1px", mb: 2 }}>
+          Add Entry
+        </Typography>
+      </Box>
+      <Typography sx={{ color: dark ? "rgba(255,255,255,0.45)" : "#888", mt: 2, mb: 3, fontWeight: 500 }}>
+        Log manually or import from your bank statement
+      </Typography>
 
-      <ToggleButtonGroup value={type} exclusive onChange={handleTypeChange} fullWidth sx={{ mb: 3 }}>
+      <Card {...glassCard} sx={{p:2}} >
+        <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <StatementUploader />
+        </Box>
+      </Card>
+
+      <ToggleButtonGroup value={type} exclusive onChange={handleTypeChange} fullWidth sx={{ mt: 3, mb: 3 }}>
         {["income", "expense", "debt"].map((t) => (
           <ToggleButton key={t} value={t} sx={{
             textTransform: "none", fontWeight: 700, fontSize: 14,
@@ -175,7 +180,7 @@ export default function AddEntry() {
         ))}
       </ToggleButtonGroup>
 
-      <Card {...glassCard}>
+      <Card {...glassCard} >
         <CardContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
 
           {type === "debt" && (

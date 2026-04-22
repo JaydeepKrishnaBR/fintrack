@@ -177,8 +177,34 @@ function InsightItem({ icon, text, color, dark }) {
   );
 }
 
-export default function FinScore({ transactions, debts, dark }) {
+export default function FinScore({ transactions, debts, dark, compact }) {
   const result = useMemo(() => calcScore(transactions, debts), [transactions, debts]);
+
+  if (compact) {
+    if (!result) {
+      return (
+        <Typography sx={{ fontSize: 13, color: dark ? "rgba(255,255,255,0.35)" : "#bbb" }}>
+          Add transactions to calculate
+        </Typography>
+      );
+    }
+
+    return (
+      <Box display="flex" alignItems="center" gap={1.5}>
+        <Typography sx={{ fontSize: 28, fontWeight: 900, color: scoreColor(result.total), letterSpacing: "-1px" }}>
+          {result.total}
+        </Typography>
+        <Box>
+          <Typography sx={{ fontSize: 12, fontWeight: 700, color: scoreColor(result.total) }}>
+            {scoreLabel(result.total)}
+          </Typography>
+          <Typography sx={{ fontSize: 10, color: dark ? "rgba(255,255,255,0.35)" : "#aaa" }}>
+            out of 100
+          </Typography>
+        </Box>
+      </Box>
+    );
+  }
 
   if (!result) {
     return (

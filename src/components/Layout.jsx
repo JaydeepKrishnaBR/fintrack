@@ -20,6 +20,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import FlagIcon from "@mui/icons-material/Flag";
+import AnimatedBackground from "./AnimatedBackground";
 
 const DRAWER_WIDTH = 230;
 
@@ -53,7 +54,7 @@ export default function Layout({ children }) {
   const drawerContent = (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%", ...glassStyle(dark) }}>
       {/* Logo */}
-      <Box sx={{ pb: 2 }}>
+      <Box sx={{p:2, pb: 2 }}>
         <Typography sx={{
           fontSize: 22, fontWeight: 800, letterSpacing: "-1px",
           background: "linear-gradient(135deg, #1D9E75 0%, #0a7a57 100%)",

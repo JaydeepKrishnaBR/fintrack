@@ -31,6 +31,7 @@ export default function SalaryReport() {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [exporting, setExporting] = useState(false);
+  const [showAllCats, setShowAllCats] = useState(false);
   const reportRef = useRef();
 
   useEffect(() => {
@@ -90,7 +91,7 @@ export default function SalaryReport() {
           <Typography sx={{ fontSize: { xs: 26, sm: 32 }, fontWeight: 800, letterSpacing: "-1px", mb: 0.3 }}>
             Salary Report
           </Typography>
-          <Typography sx={{ color: dark ? "rgba(255,255,255,0.45)" : "#888", fontWeight: 500 }}>
+          <Typography sx={{ color: dark ? "rgba(255,255,255,0.45)" : "#888", fontWeight: 500, mb: 2 }}>
             Where did your money go in {report.month}?
           </Typography>
         </Box>
@@ -100,7 +101,7 @@ export default function SalaryReport() {
           sx={{
             borderRadius: 2.5, textTransform: "none", fontWeight: 600,
             borderColor: dark ? "rgba(29,158,117,0.4)" : "rgba(29,158,117,0.5)",
-            color: "#1D9E75",
+            color: "#1D9E75", mb: 2,
           }}
         >
           {exporting ? "Exporting..." : "Download Card"}
@@ -164,26 +165,40 @@ export default function SalaryReport() {
               </Typography>
             )}
 
-            {report.categories.map((cat, i) => (
-              <Box key={cat.name} mb={1.5}>
-                <Box display="flex" alignItems="center" justifyContent="space-between" mb={0.5}>
-                  <Box display="flex" alignItems="center" gap={1}>
-                    <Typography sx={{ fontSize: 16 }}>{CATEGORY_EMOJI[cat.name] || "📦"}</Typography>
-                    <Typography sx={{ fontSize: 13, fontWeight: 600 }}>{cat.name}</Typography>
-                  </Box>
-                  <Box textAlign="right">
-                    <Typography sx={{ fontSize: 13, fontWeight: 800 }}>{fmt(cat.amount)}</Typography>
-                    <Typography sx={{ fontSize: 11, color: dark ? "rgba(255,255,255,0.35)" : "#aaa" }}>
-                      {cat.pct}% of income
-                    </Typography>
-                  </Box>
-                </Box>
-                <LinearProgress variant="determinate" value={Math.min(cat.pct, 100)}
-                  sx={{ height: 5, borderRadius: 3,
-                    bgcolor: dark ? "rgba(255,255,255,0.06)" : "#f5f5f5",
-                    "& .MuiLinearProgress-bar": { bgcolor: BAR_COLORS[i % BAR_COLORS.length], borderRadius: 3 } }} />
-              </Box>
-            ))}
+            {(showAllCats ? report.categories : report.categories.slice(0, 3)).map((cat, i) => (
+  <Box key={cat.name} mb={1.5}>
+    <Box display="flex" alignItems="center" justifyContent="space-between" mb={0.5}>
+      <Box display="flex" alignItems="center" gap={1}>
+        <Typography sx={{ fontSize: 16 }}>{CATEGORY_EMOJI[cat.name] || "📦"}</Typography>
+        <Typography sx={{ fontSize: 13, fontWeight: 600 }}>{cat.name}</Typography>
+      </Box>
+      <Box textAlign="right">
+        <Typography sx={{ fontSize: 13, fontWeight: 800 }}>{fmt(cat.amount)}</Typography>
+        <Typography sx={{ fontSize: 11, color: dark ? "rgba(255,255,255,0.35)" : "#aaa" }}>
+          {cat.pct}% of income
+        </Typography>
+      </Box>
+    </Box>
+    <LinearProgress variant="determinate" value={Math.min(cat.pct, 100)}
+      sx={{ height: 5, borderRadius: 3,
+        bgcolor: dark ? "rgba(255,255,255,0.06)" : "#f5f5f5",
+        "& .MuiLinearProgress-bar": { bgcolor: BAR_COLORS[i % BAR_COLORS.length], borderRadius: 3 } }} />
+  </Box>
+))}
+
+{/* View more button */}
+{report.categories.length > 3 && (
+  <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+  <Button
+    size="small" onClick={() => setShowAllCats(!showAllCats)}
+    sx={{ textTransform: "none", fontWeight: 600, color: "#1D9E75", fontSize: 13, mb: 1, pl: 0 }}
+  >
+    {showAllCats
+      ? "Show less ▲"
+      : `View ${report.categories.length - 3} more categories ▼`}
+  </Button>
+  </Box>
+)}
 
             {report.totalDebt > 0 && (
               <Box mb={1.5}>
