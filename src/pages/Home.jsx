@@ -8,6 +8,10 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import SavingsIcon from "@mui/icons-material/Savings";
 import FinScore from "../components/FinScore";
+import { generateInsights, detectSubscriptions } from "../utils/insightEngine";
+import InsightCards from "../components/InsightCards";
+import BurnRate from "../components/BurnRate";
+import SubscriptionDetector from "../components/SubscriptionDetector";
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -138,6 +142,29 @@ export default function Home() {
   </CardContent>
 </Card>
 
+              {/* Insights */}
+<Card {...glassCard(dark)} sx={{ ...glassCard(dark).sx, mt: 2 }}>
+  <CardContent>
+    <InsightCards
+      insights={generateInsights(transactions, debts, {})}
+      dark={dark}
+    />
+  </CardContent>
+</Card>
+
+{/* Burn Rate */}
+<Card {...glassCard(dark)} sx={{ ...glassCard(dark).sx, mt: 2 }}>
+  <CardContent>
+    <BurnRate transactions={transactions} dark={dark} />
+  </CardContent>
+</Card>
+
+{/* Subscription Leaks */}
+<Card {...glassCard(dark)} sx={{ ...glassCard(dark).sx, mt: 2 }}>
+  <CardContent>
+    <SubscriptionDetector transactions={transactions} dark={dark} />
+  </CardContent>
+</Card>
     </Box>
   );
 }

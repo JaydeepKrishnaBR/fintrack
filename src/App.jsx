@@ -16,6 +16,8 @@ import AddEntry from "./pages/AddEntry";
 import Dashboard from "./pages/Dashboard";
 import Transactions from "./pages/Transactions";
 import Profile from "./pages/Profile";
+import SalaryReport from "./pages/SalaryReport";
+import Goals from "./pages/Goals";
 
 export default function App() {
   return (
@@ -32,6 +34,8 @@ export default function App() {
             <Route path="/dashboard" element={<ProtectedRoute><Layout><Dashboard /></Layout></ProtectedRoute>} />
             <Route path="/transactions" element={<ProtectedRoute><Layout><Transactions /></Layout></ProtectedRoute>} />
             <Route path="/profile" element={<ProtectedRoute><Layout><Profile /></Layout></ProtectedRoute>} />
+            <Route path="/report" element={<ProtectedRoute><Layout><SalaryReport /></Layout></ProtectedRoute>} />
+            <Route path="/goals" element={<ProtectedRoute><Layout><Goals /></Layout></ProtectedRoute>} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

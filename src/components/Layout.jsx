@@ -18,6 +18,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import FlagIcon from "@mui/icons-material/Flag";
 
 const DRAWER_WIDTH = 230;
 
@@ -25,6 +27,8 @@ const navItems = [
   { label: "Home", icon: <HomeIcon />, path: "/" },
   { label: "Add Entry", icon: <AddCircleIcon />, path: "/add" },
   { label: "Dashboard", icon: <BarChartIcon />, path: "/dashboard" },
+  { label: "Salary Report", icon: <AssessmentIcon />, path: "/report" },
+  { label: "Goals", icon: <FlagIcon />, path: "/goals" },
   { label: "Transactions", icon: <ReceiptIcon />, path: "/transactions" },
   { label: "Profile", icon: <PersonIcon />, path: "/profile" },
 ];
@@ -49,7 +53,7 @@ export default function Layout({ children }) {
   const drawerContent = (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%", ...glassStyle(dark) }}>
       {/* Logo */}
-      <Box sx={{ p: 2.5, pb: 2 }}>
+      <Box sx={{ pb: 2 }}>
         <Typography sx={{
           fontSize: 22, fontWeight: 800, letterSpacing: "-1px",
           background: "linear-gradient(135deg, #1D9E75 0%, #0a7a57 100%)",
@@ -191,7 +195,7 @@ export default function Layout({ children }) {
           }}>
             {drawerContent}
           </Drawer>
-          <Box component="main" sx={{ flex: 1, p: 3, ml: `${DRAWER_WIDTH}px` }}>{children}</Box>
+          <Box component="main" sx={{ flex: 1, p: 3, ml: 2 }}>{children}</Box>
         </>
       )}
     </Box>
