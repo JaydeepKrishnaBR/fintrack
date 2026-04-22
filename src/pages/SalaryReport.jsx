@@ -188,10 +188,10 @@ export default function SalaryReport() {
 
 {/* View more button */}
 {report.categories.length > 3 && (
-  <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+  <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 3,}}>
   <Button
-    size="small" onClick={() => setShowAllCats(!showAllCats)}
-    sx={{ textTransform: "none", fontWeight: 600, color: "#1D9E75", fontSize: 13, mb: 1, pl: 0 }}
+    size="meduim" onClick={() => setShowAllCats(!showAllCats)}
+    sx={{ textTransform: "none", fontWeight: 600, color: "#609c64", fontSize: 13, mb: 1, p: 1, bgcolor: dark ? "rgba(89, 91, 89, 0.25)" : "#4f504f49", }}
   >
     {showAllCats
       ? "Show less ▲"

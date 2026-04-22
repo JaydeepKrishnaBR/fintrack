@@ -104,12 +104,12 @@ export default function Goals() {
           <Typography sx={{ fontSize: { xs: 26, sm: 32 }, fontWeight: 800, letterSpacing: "-1px", mb: 0.3 }}>
             Goals
           </Typography>
-          <Typography sx={{ color: dark ? "rgba(255,255,255,0.45)" : "#888", fontWeight: 500 }}>
+          <Typography sx={{ color: dark ? "rgba(255,255,255,0.45)" : "#888", fontWeight: 500, mb: 2 }}>
             Save with purpose — track every rupee towards what matters
           </Typography>
         </Box>
         <Button variant="contained" startIcon={<AddIcon />} onClick={() => setOpen(true)}
-          sx={{ bgcolor: "#1D9E75", "&:hover": { bgcolor: "#0F6E56" }, borderRadius: 2.5, textTransform: "none", fontWeight: 700, boxShadow: "none" }}>
+          sx={{ bgcolor: "#1D9E75", "&:hover": { bgcolor: "#0F6E56" }, borderRadius: 2.5, textTransform: "none", fontWeight: 700, boxShadow: "none", mb: 2 }}>
           New Goal
         </Button>
       </Box>
