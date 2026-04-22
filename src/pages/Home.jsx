@@ -7,6 +7,7 @@ import { Box, Card, CardContent, Typography, LinearProgress, Grid } from "@mui/m
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import SavingsIcon from "@mui/icons-material/Savings";
+import FinScore from "../components/FinScore";
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -127,6 +128,16 @@ export default function Home() {
           {debts.length === 0 && <Typography sx={{ color: dark ? "rgba(255,255,255,0.3)" : "#ccc", fontSize: 13, mt: 0.5 }}>No debts added yet.</Typography>}
         </CardContent>
       </Card>
+
+            <Card {...glassCard(dark)} sx={{ ...glassCard(dark).sx, mt: 2 }}>
+  <CardContent>
+    <Typography sx={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.8, color: dark ? "rgba(255,255,255,0.4)" : "#aaa", mb: 2 }}>
+      FinManage Score
+    </Typography>
+    <FinScore transactions={transactions} debts={debts} dark={dark} />
+  </CardContent>
+</Card>
+
     </Box>
   );
 }
