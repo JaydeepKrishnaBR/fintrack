@@ -21,12 +21,14 @@ import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import FlagIcon from "@mui/icons-material/Flag";
 import AnimatedBackground from "./AnimatedBackground";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 const DRAWER_WIDTH = 230;
 
 const navItems = [
   { label: "Home", icon: <HomeIcon />, path: "/" },
   { label: "Add Entry", icon: <AddCircleIcon />, path: "/add" },
+  { label: "Expense Planner", icon: <CalendarMonthIcon />, path: "/planner" },
   { label: "Dashboard", icon: <BarChartIcon />, path: "/dashboard" },
   { label: "Salary Report", icon: <AssessmentIcon />, path: "/report" },
   { label: "Goals", icon: <FlagIcon />, path: "/goals" },
